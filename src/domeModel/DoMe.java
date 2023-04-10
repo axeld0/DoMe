@@ -65,6 +65,7 @@ public class DoMe {
         newCD.setNumberOfSongs(numberOfSongs);
         newCD.setAuthor(author);
         newCD.setLength(length);
+        newCD.setComment(comment);
 
         addElement(newCD);
 

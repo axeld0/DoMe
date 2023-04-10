@@ -27,20 +27,17 @@ public class Main {
 
             System.out.println("1)Display Media.\n2)Add a movie or a music CD.\n3)Search. \n4)Erase.\n5)Lend or return an element.\n6)Exit program.");
             options = scan.nextInt();
-            switch (options)
-            {
-                case 1 :
-                {
-                    int option2 ;
-                    do
-                    {
+            switch (options) {
+                case 1:
+
+                    int option2;
+                    do {
                         System.out.println("Select an option :\n1)DVDs.\n2)Music CDs.\n3)Everything.\n4)Previous Menu.");
                         option2 = scan.nextInt();
-                        switch (option2)
-                        {
-                            case 1 :
-                               String DVDlist = new String();
-                               DVDlist = newDoMe.displayDVDs(DVDlist);
+                        switch (option2) {
+                            case 1:
+                                String DVDlist = new String();
+                                DVDlist = newDoMe.displayDVDs(DVDlist);
                                 System.out.println(DVDlist);
                                 break;
                             case 2:
@@ -55,42 +52,53 @@ public class Main {
                                 break;
 
                         }
-                    }while (option2 !=4);
-                }
+                    } while (option2 != 4);
+
                 case 2:
                     System.out.println("do you want to add a CD or a DVD?");
-                    String type =scan.next();
+                    String type = scan.next();
+                    scan.nextLine();
                     System.out.println("Please, insert the title : ");
-                    String newElementTitle = scan.next();
+                    String newElementTitle = scan.nextLine();
                     System.out.println("Please, insert element lenght (in minutes) : ");
                     int newElementLength = scan.nextInt();
                     String newElementComment = "";
-                   if(type.equals("CD"))
-                   {
-                       System.out.println("Please, now insert author : ");
-                       String newElementAuthor = scan.next();
-                       System.out.println("Please insert the number of songs :");
-                       int newElementNumberOfSongs = scan.nextInt();
-                       System.out.println("Please, insert a comment :");
-                       newElementComment = scan.next();
-                       newDoMe.submitNewCDInfo(newElementLength,newElementAuthor,newElementTitle,newElementNumberOfSongs, newElementComment);
-                   }
-                   else if (type.equals("DVD"))
-                   {
+                    if (type.equals("CD")) {
+                        scan.nextLine();
+                        System.out.println("Please, now insert author : ");
+                        String newElementAuthor = scan.nextLine();
+                        System.out.println("Please insert the number of songs :");
+                        int newElementNumberOfSongs = scan.nextInt();
+                        scan.nextLine();
+                        System.out.println("Please, insert a comment :");
+                        newElementComment = scan.nextLine();
+                        newDoMe.submitNewCDInfo(newElementLength, newElementAuthor, newElementTitle, newElementNumberOfSongs, newElementComment);
+                    } else if (type.equals("DVD")) {
+                        scan.nextLine();
+                        System.out.println("Please, insert Director's name :");
+                        String newElementDirector = scan.nextLine();
+                        scan.nextLine();
+                        System.out.println("Please, insert a comment");
+                        newElementComment = scan.nextLine();
+                        newDoMe.submitNewDVDInfo(newElementLength, newElementDirector, newElementTitle, newElementComment);
+                    }
+                    System.out.println("\nElement added successfully!");
+                    break;
 
-                       System.out.println("Please, insert Director's name :");
-                       String newElementDirector = scan.next();
-                       System.out.println("Please, insert a comment");
-                       newElementComment = scan.next();
-                       newDoMe.submitNewDVDInfo(newElementLength,newElementDirector,newElementTitle,newElementComment);
-
-                   }
+                case 3:
 
 
                 default:
                     System.out.println("Wrong. Try Again :)");
                     break;
+
+
+
+
+
+
             }
+
         }while (options != 6);
-    }
-}
+
+    }}
