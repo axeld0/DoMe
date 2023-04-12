@@ -50,9 +50,9 @@ public class Main {
                                 mediaList = newDoMe.displayMedia(mediaList);
                                 System.out.println(mediaList);
                                 break;
-
                         }
                     } while (option2 != 4);
+                    break;
 
                 case 2:
                     System.out.println("do you want to add a CD or a DVD?");
@@ -86,11 +86,41 @@ public class Main {
                     break;
 
                 case 3:
-
-
-                default:
-                    System.out.println("Wrong. Try Again :)");
+                    scan.nextLine();
+                    System.out.println("Plase insert the title of the element that you're lookging for");
+                    String search = scan.nextLine();
+                    String elementFound = newDoMe.search(search);
+                    if(elementFound.equals("Wrong, try again."))
+                    {
+                        System.out.println(elementFound);
+                    }
+                    else {
+                        System.out.println("Element Found! here it is :" + elementFound);
+                    }
                     break;
+
+                case 4:
+                    scan.nextLine();
+                    System.out.println("Please instert the title of the element that you want to erase.");
+                    String toBeErased = scan.nextLine();
+                    int erased = newDoMe.delete(toBeErased);
+                    if (erased == 1)
+                    {
+                        System.out.println("Element found and deleted successfully.");
+                    }
+                    else if (erased == 0)
+                    {
+                        System.out.println("Element not found. Please try again.");
+                    }
+                    break;
+                case 5:
+                    scan.nextLine();
+                    System.out.println("Please, insert the title of the element that you want to lend or return : ");
+                    String toBeLended = scan.nextLine();
+
+
+
+
 
 
 

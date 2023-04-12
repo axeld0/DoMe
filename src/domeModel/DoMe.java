@@ -87,4 +87,67 @@ public class DoMe {
         addElement(newDVD);
     }
 
+    /**
+     * Searches and looks for an CD or DVD and returns it.
+     */
+
+    public String search (String search)
+    {
+        String found = "Not found, try again.";
+        for( Element e : elementList)
+        {
+            if(search.equals(e.getTitle()))
+            {
+                found = e.getInfo().toString();
+            }
+        }
+        return found;
+    }
+
+
+    /**
+     * erases an element of the ArrayList
+     */
+    public int delete (String toBeErased)
+    {
+        int flag = 0;
+        for ( Element e : elementList)
+        {
+            if(toBeErased.equals(e.getTitle()))
+            {
+                elementList.remove(e);
+                flag = 1;
+            }
+        }
+        return flag;
+    }
+
+    /**
+     * Selects an element to be lended
+     */
+
+    public boolean lend (String toBeLended)
+    {
+        boolean flag = false;
+        for (Element e : elementList)
+        {
+
+            if(toBeLended.equals(e.getTitle()))
+            {
+                if(e.isDoIGotit()==false)
+                {
+                    e.setDoIGotit(true);
+                    flag = true;
+
+                }
+                else {
+                    e.setDoIGotit(false);
+                    flag = false;
+                }
+            }
+        }
+        return flag;
+    }
+
+
 }
